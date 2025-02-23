@@ -1,0 +1,19 @@
+:root {
+    // цвет
+    --red-color: green;
+    --grey-color: #666666;
+    --grey-1-color: #808080;
+    --white-color: #ffffff;
+    --black-1-color: #171717;
+    --black-2-color: #131313;
+    --gold-color: #C2AB81;
+  
+    // Шрифты
+    --default-font-size: 14px;
+    --default-line-height: 24px;
+    --default-font-color: var(--white-color);
+    --base-background-color: var(--black-2-color);
+  
+    // Макс ширина контента
+    --content-max-width: 1720px;
+  }

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="../src/contents/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Magwai</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Mulish:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="main-header">
+      <div class="main-header__content">
+        <nav class="navbar">
+          <!-- Меню для мобильных устройств -->
+          <div class="navbar__toggle" id="menu-toggle">
+            <img
+              class="navbar__toggle-icon"
+              src="./src/contents/menu-icon.svg"
+              alt="BurgerMenu"
+            />
+          </div>
+
+          <!-- Логотип -->
+          <a href="#" class="navbar__logo">
+            <img
+              class="navbar__logo-img"
+              src="./src/contents/logo.svg"
+              alt="magwaiLogo"
+            />
+            <img
+              class="navbar__logo-text"
+              src="./src/contents/logo-text.svg"
+              alt="magwai"
+            />
+          </a>
+
+          <!-- Навигация -->
+          <div class="navigation__wrapper-background"></div>
+          <div class="navigation__wrapper">
+            <ul class="navbar__navigation navigation">
+              <li class="navigation__item">
+                <a href="#" class="navigation__link">Услуги</a>
+              </li>
+              <li class="navigation__item">
+                <a href="#" class="navigation__link">Абонементы</a>
+              </li>
+              <li class="navigation__item">
+                <a href="#" class="navigation__link">Почему мы</a>
+              </li>
+              <li class="navigation__item">
+                <a href="#" class="navigation__link">Оборудование</a>
+              </li>
+              <li class="navigation__item">
+                <a href="#" class="navigation__link">Акции</a>
+              </li>
+              <li class="navigation__item">
+                <a href="#" class="navigation__link">FAQ</a>
+              </li>
+              <li class="navigation__item">
+                <a href="#" class="navigation__link">Контакты</a>
+              </li>
+            </ul>
+
+            <!-- Кнопки в навигации -->
+            <div class="nav-menu-buttons">
+              <div class="button__wrapper contacts__call-wrapper">
+                <a
+                  href="tel:+123456789"
+                  class="contacts__link button nav-menu-buttons__button button_grey button_responsive"
+                >
+                  <img
+                    src="./src/contents/phone-icon.svg"
+                    alt="phone"
+                    class="button__icon"
+                  />
+                </a>
+              </div>
+              <div class="button__wrapper contacts__request-wrapper">
+                <button
+                  class="button button_responsive nav-menu-buttons__button"
+                >
+                  <span class="button__text">Оставить заявку</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </nav>
+
+        <!-- Кнопки в шапке -->
+        <div class="contacts__container">
+          <div class="button__wrapper contacts__call-wrapper">
+            <a href="tel:+123456789" class="contacts__link button button_grey">
+              <img src="./src/contents/phone-icon.svg" alt="phone" />
+            </a>
+          </div>
+          <div class="button__wrapper contacts__request-wrapper">
+            <button class="button button_with-border">
+              <span class="button__text">Оставить заявку</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="main">
+      <!-- Секция с заголовком -->
+      <section class="space-section">
+        <div class="space-section__content-wrapper">
+          <div class="space-section__content">
+            <h2 class="space-section__header">
+              Полет Илона Маска и&nbsp;DOGIE&nbsp;COIN
+            </h2>
+            <p class="space-section__text">
+              В прошлый четверг все офигели от полета DOGIE COIN на марс.
+            </p>
+            <div class="button__wrapper space-section__request-wrapper">
+              <button class="button button_with-border">
+                <span class="button__text">Оставить заявку</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Секция с карточками -->
+      <section class="cards-section">
+        <div class="cards-section__content">
+          <h2 class="cards-section__header">Карточки</h2>
+          <div
+            class="cards-section__cards-container"
+            id="cards-container"
+          ></div>
+          <div class="spinner__container" id="spinner-container">
+            <svg
+              class="spinner"
+              viewBox="0 0 160 160"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <circle
+                cx="80"
+                cy="80"
+                fill="none"
+                r="49.4"
+                stroke-width="8.2"
+                stroke="#808080"
+              />
+              <circle
+                cx="80"
+                cy="80"
+                fill="none"
+                r="49.4"
+                stroke-width="8.2"
+                stroke="#C2AB81"
+                stroke-dasharray="80 280"
+                stroke-linecap="round"
+              />
+            </svg>
+          </div>
+          <div class="button__wrapper cards-section__load-wrapper">
+            <button class="button button_with-border" id="load-button">
+              <span class="button__text">Загрузить еще</span>
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script type="module" src="./src/App.js"></script>
+  </body>
+</html>

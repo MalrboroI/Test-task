@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Mulish:wght@400;600;700&display=swap');
+
+// Шрифты
+body {
+    font-family: 'Montserrat', sans-serif;
+    font-size: var(--default-font-size);
+    color: var(--default-font-color);
+    line-height: var(--default-line-height);
+  }
+  
+  // Дополнительные классы для шрифтов
+  .mulish-bold {
+    font-family: 'Mulish', sans-serif;
+    font-weight: 700;
+  }
+  
+  .mulish-semibold {
+    font-family: 'Mulish', sans-serif;
+    font-weight: 600;
+  }
+  
+  .montserrat-regular {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+  }
+  
+  .montserrat-bold {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+  }
