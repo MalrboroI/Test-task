@@ -1,7 +1,7 @@
-@use './mixins.scss' as m;
+@use "./mixins.scss" as m;
 
-// Global reset and box-sizing
-*, 
+// Общий сброс стилей
+*,
 *::after,
 *::before {
   margin: 0;
@@ -13,22 +13,26 @@ body {
   background-color: var(--base-background-color);
 
   &.body_stop-scrolling {
-    @include m.respond(tab-land) {
+    @include m.respond(tablet) {
       height: 100%;
       overflow: hidden;
     }
   }
 }
 
-// Header styles
+// Стиль хэдера
 .main-header {
   padding: 28px 100px;
   position: relative;
   background-color: var(--base-background-color);
   z-index: 20;
 
-  @include m.respond(tab-land) { padding: 30px 50px 20px; }
-  @include m.respond(phone) { padding: 20px 15px; }
+  @include m.respond(phone) {
+    padding: 20px 15px;
+  }
+  @include m.respond(ipad) {
+    padding: 28px 38px;
+  }
 
   &__content {
     max-width: var(--content-max-width);
@@ -38,29 +42,45 @@ body {
   }
 }
 
-// Navbar styles
+// Бургер меню
 .navbar {
   display: flex;
   align-items: center;
   width: calc(1060 / 1720 * 100%);
   height: 60px;
 
-  @include m.respond(small-desktop) { width: 75%; }
-  @include m.respond(narrow-tab) { width: 100%; }
+  @include m.respond(small-mid-desktop) {
+    width: 75%;
+  }
+  @include m.respond(max-phone) {
+    width: 100%;
+  }
 
   &__toggle {
     visibility: hidden;
     pointer-events: none;
     width: 0;
+    transition: transform 0.5s ease;
 
-    @include m.respond(tab-land) {
+    &:hover {
+      transform: rotate(90deg);
+    }
+
+    &:active {
+      transform: rotate(180deg);
+    }
+
+    @include m.respond(tablet) {
       visibility: visible;
       width: fit-content;
       cursor: pointer;
       pointer-events: all;
+      width: 37px;
+      height: 31px;
 
-      &:hover::before, &:active::before {
-        content: '';
+      &:hover::before,
+      &:active::before {
+        content: "";
         display: block;
         position: absolute;
         width: 100%;
@@ -83,25 +103,60 @@ body {
     height: 60px;
     margin-right: auto;
 
-    @include m.respond(tab-land) { margin: 0 auto; }
-    @include m.respond(phone) { margin: 0 0 0 auto; }
+    @include m.respond(tablet) {
+      margin: 0 auto;
+    }
+    @include m.respond(phone) {
+      margin: 0 0 0 auto;
+    }
   }
 
-  &__logo-img, &__logo-text {
-    @include m.respond(very-small-desktop) { width: 38.41px; }
-    @include m.respond(tab-land) { width: auto; }
-    @include m.respond(narrow-tab) { width: 38.41px; position: relative; bottom: 4px; }
+  &__logo-img,
+  &__logo-text {
+    @include m.respond(desktop) {
+      width: 55px;
+    }
+    @include m.respond(ipad) {
+      width: 57.89px;
+      height: 60px;
+    }
+    @include m.respond(max-phone) {
+      position: relative;
+      // bottom: 4px;
+    }
+  }
+  &__logo-text {
+    @include m.respond(ipad) {
+      width: 90.36px;
+      height: 24.48px;
+    }
   }
 }
 
-// Navigation styles
+// Логотип
+.navbar__logo {
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+  @include m.respond(mid-desktop) {
+    margin-right: 20px;
+  }
+}
+
+// Стили навигации
 .navigation {
   list-style: none;
   display: flex;
   gap: 8px;
   justify-content: space-between;
 
-  @include m.respond(tab-land) {
+  @include m.respond(tablet) {
     flex-direction: column;
     width: fit-content;
     gap: 15px;
@@ -109,9 +164,11 @@ body {
 
   &__wrapper-background {
     height: 0;
+    transition: background-color 0.3s ease;
 
     &_open {
-      @include m.respond(tab-land) {
+      background-color: rgba(#565656, 0.4);
+      @include m.respond(tablet) {
         min-height: 100vh;
         width: 100vw;
         position: absolute;
@@ -127,7 +184,7 @@ body {
     width: calc(828 / 1060 * 100%);
     transition: scale 1s ease-in-out;
 
-    @include m.respond(tab-land) {
+    @include m.respond(tablet) {
       background-color: var(--base-background-color);
       position: absolute;
       top: 100%;
@@ -135,9 +192,9 @@ body {
       left: 0;
       width: calc(100% - 98px);
       min-height: 0;
-      padding: 0 49px; 
+      padding: 0 49px;
       max-height: 0;
-      transition: all .3s ease-out; 
+      transition: all 0.3s ease-out;
       pointer-events: none;
       z-index: 20;
 
@@ -151,7 +208,7 @@ body {
     }
 
     &_open {
-      @include m.respond(tab-land) {
+      @include m.respond(tablet) {
         padding: 59px 49px;
         min-height: 796px;
         max-height: 796px;
@@ -170,20 +227,27 @@ body {
   &__link {
     text-transform: uppercase;
     text-decoration: none;
-    font-family: 'Montserrat Bold';
+    font-family: "Montserrat Bold";
     color: var(--white-color);
     line-height: 21px;
     display: inline-block;
     width: 100%;
 
-    @include m.respond(mid-desktop) { font-size: 12px; }
-    @include m.respond(tab-land) {
+    @include m.respond(desktop) {
+      font-size: 11px;
+    }
+    @include m.respond(mid-desktop) {
+      font-size: 11px;
+    }
+    @include m.respond(tablet) {
       font-size: 36px;
       line-height: 54px;
       color: var(--base-background-color);
       -webkit-text-stroke: 1px var(--grey-1-color);
 
-      &:hover { color: var(--grey-1-color); }
+      &:hover {
+        color: var(--grey-1-color);
+      }
       &:active {
         color: var(--grey-color);
         -webkit-text-stroke: 1px var(--grey-color);
@@ -197,36 +261,82 @@ body {
   }
 }
 
-// Contacts styles
+// Стили контактов
+.nav-menu-buttons {
+  display: none;
+
+  @include m.respond(phone) {
+    display: block;
+  }
+}
+
 .contacts {
   &__container {
     display: flex;
     gap: 12.5px;
     align-items: center;
 
-    @include m.respond(very-small-desktop) { gap: 6px; }
-    @include m.respond(tab-land) { gap: 0; }
-    @include m.respond(phone) { display: none; }
+    @include m.respond(tablet) {
+      gap: 0;
+    }
+    @include m.respond(phone) {
+      display: none;
+    }
+    @include m.respond(desktop) {
+      gap: 30.5px;
+    }
   }
 
-  &__call-wrapper, &__request-wrapper {
+  &__call-wrapper,
+  &__request-wrapper {
     &.button__wrapper {
-      @include m.respond(very-small-desktop) { height: 50px; }
-      @include m.respond(tab-land) { height: 60px; }
-      @include m.respond(narrow-tab) { height: 50px; }
-      @include m.respond(phone) { height: 60px; width: 100%; }
+      @include m.respond(desktop) {
+        width: 180px;
+        @include m.respond(phone) {
+          height: 60px;
+          width: 330px;
+        }
+      }
+      @include m.respond(ipad) {
+        width: 92.5px;
+        height: 60px;
+        @include m.respond(phone) {
+          height: 60px;
+          width: 330px;
+        }
+      }
+      @include m.respond(tablet) {
+        height: 60px;
+      }
     }
   }
 
   &__request-wrapper.button__wrapper {
-    @include m.respond(small-desktop) { width: 250px; }
-    @include m.respond(very-small-desktop) { width: 190px; }
-    @include m.respond(tab-land) { width: 201px; }
-    @include m.respond(narrow-tab) { width: 180px; }
+    @include m.respond(max-phone) {
+      width: 180px;
+    }
+    @include m.respond(small-mid-desktop) {
+      width: 250px;
+    }
+    @include m.respond(ipad) {
+      width: 201.5px;
+      height: 60px;
+    }
+    @include m.respond(tablet) {
+      width: 201px;
+    }
+    @include m.respond(desktop) {
+      width: 180px;
+      height: 60px;
+    }
+    @include m.respond(phone) {
+      height: 60px;
+      width: 330px;
+    }
   }
 }
 
-// Button styles
+// Стили кнопок
 .button {
   display: flex;
   align-items: center;
@@ -237,7 +347,7 @@ body {
   color: var(--white-color);
   outline: none;
   border: none;
-  font-family: 'Montserrat Bold';
+  font-family: "Montserrat Bold";
   font-size: 12px;
   line-height: 18px;
   text-transform: uppercase;
@@ -245,7 +355,27 @@ body {
   transform-origin: bottom right;
   cursor: pointer;
   box-sizing: border-box;
-  transition: background-color 1s ease-in;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+
+  &:hover {
+    transform: scale(1.05);
+    transform-origin: 0;
+  }
+
+  &:active {
+    background-color: var(--gold-color), 10%;
+    transform: scale(0.95);
+  }
+
+  &_grey {
+    &:hover {
+      opacity: 0.6;
+    }
+
+    &:active {
+      opacity: 0.8;
+    }
+  }
 
   &:disabled {
     cursor: not-allowed;
@@ -253,46 +383,56 @@ body {
     opacity: 0.6;
   }
 
-  &__text { transform: skew(17.13deg); }
+  &__text {
+    transform: skew(17.13deg);
+  }
 
   &_grey {
     background-color: var(--base-background-color);
     border: 1px solid var(--white-color);
     opacity: 0.45;
 
-    img { transform: skew(17.13deg); }
+    img {
+      transform: skew(17.13deg);
+    }
   }
 
   &__wrapper {
     width: 293px;
     height: 60px;
 
-    &_menu { width: calc(100% - 18.5px); }
+    &_menu {
+      width: calc(100% - 18.5px);
+    }
+
+    @include m.respond(tablet) {
+      height: 46px;
+    }
   }
 
   &_with-border {
     box-shadow: inset -5.5px 0 0 0 var(--white-color),
-                inset -10.5px 0 0 0 var(--base-background-color); 
+      inset -10.5px 0 0 0 var(--base-background-color);
   }
 }
 
-// Space section styles
+// Background стили
 .space-section {
   aspect-ratio: 1920 / 959.07;
-  background: no-repeat center url('../contents/space.jpg');
+  background: no-repeat center url("../contents/space.jpg");
   background-size: cover;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
 
-  @include m.respond(tab-port) {
+  @include m.respond(ipad) {
     aspect-ratio: 765 / 907;
-    background: no-repeat center cover url('../contents/space-tab.jpg');
+    background: no-repeat center cover url("../contents/space-tab.jpg");
   }
 
   @include m.respond(phone) {
     aspect-ratio: 360 / 495;
-    background: no-repeat center cover url('../contents/space-tab.jpg');
+    background: no-repeat center cover url("../contents/space-tab.jpg");
   }
 
   &__content-wrapper {
@@ -300,8 +440,12 @@ body {
     height: calc(13 / 24 * 100%);
     padding: 0 100px 96px;
 
-    @include m.respond(tab-port) { padding: 0 49px 76px; }
-    @include m.respond(phone) { padding: 0 15px 52.31px; }
+    @include m.respond(ipad) {
+      padding: 0 49px 76px;
+    }
+    @include m.respond(phone) {
+      padding: 0 15px 52.31px;
+    }
   }
 
   &__content {
@@ -315,17 +459,26 @@ body {
     gap: 40px;
     color: var(--white-color);
 
-    @include m.respond(tab-port) { padding-bottom: 76px; }
-    @include m.respond(phone) { padding-bottom: 52.31px; }
+    @include m.respond(ipad) {
+      padding-bottom: 76px;
+    }
+    @include m.respond(phone) {
+      padding-bottom: 52.31px;
+    }
   }
 
-  &__header { max-width: 686px; @include m.section-header; }
+  &__header {
+    max-width: 686px;
+    @include m.section-header;
+  }
 
   &__text {
-    color: rgba(#FFFFFF, 0.79);
+    color: rgba(#ffffff, 0.79);
     font-size: 16px;
 
-    @include m.respond(tab-port) { max-width: 450px; }
+    @include m.respond(ipad) {
+      max-width: 450px;
+    }
     @include m.respond(phone) {
       font-size: 14px;
       line-height: 21px;
@@ -341,15 +494,15 @@ body {
   }
 }
 
-// Cards section styles
+// Стиль выбора карточек
 .cards-section {
   padding: 134px 100px 256px;
 
-  @include m.respond(tab-land) {
+  @include m.respond(tablet) {
     padding: 44px 49px 156px;
   }
 
-  @include m.respond(narrow-tab) {
+  @include m.respond(max-phone) {
     padding-bottom: 100px;
   }
 
@@ -366,8 +519,12 @@ body {
     margin-bottom: 53px;
     @include m.section-header;
 
-    @include m.respond(tab-port) { margin-bottom: 40px; }
-    @include m.respond(phone) { margin-bottom: 30px; }
+    @include m.respond(ipad) {
+      margin-bottom: 40px;
+    }
+    @include m.respond(phone) {
+      margin-bottom: 30px;
+    }
   }
 
   &__cards-container {
@@ -377,7 +534,7 @@ body {
     grid-gap: 30px;
     align-items: stretch;
 
-    @include m.respond(tab-port) {
+    @include m.respond(ipad) {
       grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
       grid-gap: 20px;
     }
@@ -392,11 +549,21 @@ body {
   }
 }
 
-// Card styles
+// Стиль карточек
 .card {
   color: var(--grey-color);
   overflow: hidden;
-    
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+
   &__image {
     display: block;
     width: calc(100% + 1px);
@@ -410,14 +577,15 @@ body {
     gap: 20px;
   }
 
-  &__header, &__subtitle {
+  &__header,
+  &__subtitle {
     color: var(--black-1-color);
   }
 
   &__header {
     font-size: 14px;
     line-height: 24px;
-    font-family: 'Mulish Bold';
+    font-family: "Mulish Bold";
     letter-spacing: 1.5px;
     text-transform: uppercase;
   }
@@ -440,7 +608,7 @@ body {
     line-height: 24px;
 
     &_bold {
-      font-family: 'Montserrat Bold';
+      font-family: "Montserrat Bold";
     }
   }
 
@@ -456,7 +624,7 @@ body {
   }
 }
 
-// Spinner animation
+// Анимация загрузки карточек
 @keyframes spin {
   to {
     transform: rotate(360deg);
@@ -477,11 +645,12 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: opacity 0.3s ease, max-height 0.3s ease;
 
     &_open {
-      max-height: 160px;
-      transition: all .3s ease-in-out;
       opacity: 1;
+      max-height: 160px;
+      transition: all 0.3s ease-in-out;
     }
   }
 }

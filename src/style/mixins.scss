@@ -1,45 +1,56 @@
 // Миксин для медиа-запросов
 @mixin respond($breakpoint) {
-    @if $breakpoint == narrow-phone {
-      @media only screen and (max-width: 480px) { @content };
-    }
-    @if $breakpoint == phone {
-      @media only screen and (max-width: 600px) { @content };
-    }
-    @if $breakpoint == narrow-tab {
-      @media only screen and (max-width: 700px) { @content };
-    }
-    @if $breakpoint == tab-port {
-      @media only screen and (max-width: 900px) { @content };
-    }
-    @if $breakpoint == tab-land {
-      @media only screen and (max-width: 1200px) { @content };
-    }
-    @if $breakpoint == very-small-desktop {
-      @media only screen and (max-width: 1350px) { @content };  
-    }
-    @if $breakpoint == small-desktop {
-      @media only screen and (max-width: 1500px) { @content };  
-    }
-    @if $breakpoint == mid-desktop {
-      @media only screen and (max-width: 1800px) { @content };  
+  @if $breakpoint == phone {
+    @media only screen and (max-width: 600px) {
+      @content;
     }
   }
-  
-  // Миксин для заголовков секций для адаптива
-  @mixin section-header {
-    font-family: 'Montserrat Bold';
-    font-size: 42px;
-    line-height: 51.2px;
-    text-transform: uppercase;
-  
-    @include respond(tab-port) {
-      font-size: 38px;
-      line-height: 46.32px;
-    }
-  
-    @include respond(phone) {
-      font-size: 20px;
-      line-height: 24.38px;
+  @if $breakpoint == max-phone {
+    @media only screen and (max-width: 767px) {
+      @content;
     }
   }
+  @if $breakpoint == ipad {
+    @media only screen and (max-width: 868px) {
+      @content;
+    }
+  }
+  @if $breakpoint == tablet {
+    @media only screen and (max-width: 1215px) {
+      @content;
+    }
+  }
+  @if $breakpoint == small-mid-desktop {
+    @media only screen and (max-width: 1350px) {
+      @content;
+    }
+  }
+  @if $breakpoint == mid-desktop {
+    @media only screen and (max-width: 1440px) {
+      @content;
+    }
+  }
+  @if $breakpoint == desktop {
+    @media only screen and (max-width: 1600px) {
+      @content;
+    }
+  }
+}
+
+// Миксин для заголовков секций для адаптива
+@mixin section-header {
+  font-family: "Montserrat Bold";
+  font-size: 42px;
+  line-height: 51.2px;
+  text-transform: uppercase;
+
+  @include respond(ipad) {
+    font-size: 38px;
+    line-height: 46.32px;
+  }
+
+  @include respond(phone) {
+    font-size: 20px;
+    line-height: 24.38px;
+  }
+}
