@@ -355,20 +355,6 @@ body {
   .contacts__call-wrapper.button__wrapper,
   .contacts__request-wrapper.button__wrapper {
     width: 92.5px;
-    height: 60px;
-  }
-}
-@media only screen and (max-width: 868px) and (max-width: 600px) {
-  .contacts__call-wrapper.button__wrapper,
-  .contacts__request-wrapper.button__wrapper {
-    height: 60px;
-    width: 330px;
-  }
-}
-@media only screen and (max-width: 1215px) {
-  .contacts__call-wrapper.button__wrapper,
-  .contacts__request-wrapper.button__wrapper {
-    height: 60px;
   }
 }
 @media only screen and (max-width: 767px) {
@@ -384,7 +370,6 @@ body {
 @media only screen and (max-width: 868px) {
   .contacts__request-wrapper.button__wrapper {
     width: 201.5px;
-    height: 60px;
   }
 }
 @media only screen and (max-width: 1215px) {
@@ -395,12 +380,17 @@ body {
 @media only screen and (max-width: 1600px) {
   .contacts__request-wrapper.button__wrapper {
     width: 180px;
-    height: 60px;
   }
 }
 @media only screen and (max-width: 600px) {
-  .contacts__request-wrapper.button__wrapper {
-    height: 60px;
+  .contacts__request-wrapper.button__wrapper,
+  .contacts__call-wrapper.button__wrapper {
+    width: 100%;
+  }
+}
+@media only screen and (max-width: 360px) {
+  .contacts__request-wrapper.button__wrapper,
+  .contacts__call-wrapper.button__wrapper {
     width: 330px;
   }
 }
